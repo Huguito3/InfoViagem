@@ -13,7 +13,8 @@ public class RestService
     HttpClient client;
     public List<Currency> currencies { get; set; }
     public CurrencyConvertResponse currencyConvert { get; set; }
-	public List<Cidades> cidadesLista { get; set;}
+    public CidadesResponse cidadesResponse { get; set; }
+    public List<Cidades> cidadesLista { get; set;}
 	public Cidades cidadeUnica { get; set; }
 
     public RestService()
@@ -59,9 +60,9 @@ public class RestService
 		{
 			var content = await response.Content.ReadAsStringAsync();
 			Debug.WriteLine(content);
-			cidadesLista = JsonConvert.DeserializeObject<List<Cidades>>(content);
+			cidadesResponse = JsonConvert.DeserializeObject<CidadesResponse>(content);
 		}
-		return cidadesLista;
+		return cidadesResponse.Results;
 	}
 
 	public async Task<Cidades> getCidadeAsync(string cidade)
@@ -72,9 +73,9 @@ public class RestService
 		{
 			var content = await response.Content.ReadAsStringAsync();
 			Debug.WriteLine(content);
-			cidadeUnica = JsonConvert.DeserializeObject<Cidades>(content);
+			cidadesResponse = JsonConvert.DeserializeObject<CidadesResponse>(content);
 				
 		}
-		return cidadeUnica;
+		return cidadesResponse.Results.First();
 	}
 }
