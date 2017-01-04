@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace InfoViagem
 {
 	public class Cidades
@@ -13,6 +15,5 @@ namespace InfoViagem
 		public string ll { get; set; }
 		public string lat { get; set; }
 		public string lon { get; set; }
-
 	}
 }
