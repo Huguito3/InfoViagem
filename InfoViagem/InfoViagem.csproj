@@ -43,6 +43,7 @@
     <Compile Include="Data\Currency.cs" />
     <Compile Include="Data\CurrencyConvertResponse.cs" />
     <Compile Include="Model\RestService.cs" />
+    <Compile Include="Data\ResultadosLista.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagenes\cielo.png" />

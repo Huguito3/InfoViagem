@@ -7,10 +7,11 @@
 	<Grid>
         <Image Source="cielo.png" Aspect="AspectFill" />
         <StackLayout Padding="25,200,25,0" >
-			<Entry Placeholder="Pais de Origem" Keyboard="Text" TextChanged="Handle_TextChanged"/>
-			<Entry Placeholder="Pais Destino" Keyboard="Text" Margin="0,50,0,0" />
+			<Entry Placeholder="Pais de Origem" Keyboard="Text" TextChanged="Handle_TextChanged" />
+			<Entry Placeholder="Pais Destino" Keyboard="Text" Completed="Termino" Margin="0,50,0,0"  />
 			<Button Text="Pesquisar"  />
 		</StackLayout>
+
     </Grid>
 	
 	

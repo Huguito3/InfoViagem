@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -13,10 +13,9 @@ public class RestService
     HttpClient client;
     public List<Currency> currencies { get; set; }
     public CurrencyConvertResponse currencyConvert { get; set; }
-    public CidadesResponse cidadesResponse { get; set; }
     public List<Cidades> cidadesLista { get; set;}
 	public Cidades cidadeUnica { get; set; }
-
+	public ResultadosLista resultado { get; set; }
     public RestService()
     {
         client = new HttpClient();
@@ -52,33 +51,21 @@ public class RestService
     }
 
 
-	public async Task<List<Cidades>> getCidadesAsync(string cidade)
-	{
-		var uri = new Uri(string.Format("https://devru-latitude-longitude-find-v1.p.mashape.com/latlon.php?location=" +cidade, string.Empty));
-		var response = await client.GetAsync(uri);
-		if (response.IsSuccessStatusCode)
-		{
-			var content = await response.Content.ReadAsStringAsync();
-			Debug.WriteLine(content);
-			cidadesResponse = JsonConvert.DeserializeObject<CidadesResponse>(content);
-		}
-		return cidadesResponse.Results;
-	}
 
-	public async Task<Cidades> getCidadeAsync(string cidade)
+	public async Task<ResultadosLista> getCidadeAsync(string cidade)
 	{
 		var uri = new Uri(string.Format("https://devru-latitude-longitude-find-v1.p.mashape.com/latlon.php?location=" + cidade, string.Empty));
 		var response = await client.GetAsync(uri);
 		if (response.IsSuccessStatusCode)
 		{
+
 			var content = await response.Content.ReadAsStringAsync();
 			Debug.WriteLine(content);
-			cidadesResponse = JsonConvert.DeserializeObject<CidadesResponse>(content);
-				
-		}
-		return cidadesResponse.Results.First();
-	}
+			resultado = JsonConvert.DeserializeObject<ResultadosLista>(content);
 
+		}
+		return resultado;
+	}
     //Current Weather Conditions
     public async Task<string> getWeatherAsync(string lat, string lng)
     {
