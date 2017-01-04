@@ -78,4 +78,19 @@ public class RestService
 		}
 		return cidadesResponse.Results.First();
 	}
+
+    //Current Weather Conditions
+    public async Task<string> getWeatherAsync(string lat, string lng)
+    {
+        var uri = new Uri(string.Format("https://simple-weather.p.mashape.com/weather?lat=" + lat + "&lng=" + lng, string.Empty));
+        client.DefaultRequestHeaders.Add("Accept", "text/plain");
+        var response = await client.GetAsync(uri);
+        var content = "";
+        if (response.IsSuccessStatusCode)
+        {
+            content = await response.Content.ReadAsStringAsync();
+            Debug.WriteLine(content);
+        }
+        return content;
+    }
 }
