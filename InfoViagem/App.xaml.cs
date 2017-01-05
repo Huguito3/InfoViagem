@@ -8,7 +8,7 @@ namespace InfoViagem
 		{
 			InitializeComponent();
 
-			MainPage = new InfoViagemPage();
+			MainPage = new NavigationPage (new InfoViagemPage());
 		}
 
 		protected override void OnStart()

@@ -30,6 +30,9 @@
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
     <EmbeddedResource Include="View\InfoViagemPage.xaml" />
+    <EmbeddedResource Include="View\Detalhes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -44,10 +47,14 @@
     <Compile Include="Data\CurrencyConvertResponse.cs" />
     <Compile Include="Model\RestService.cs" />
     <Compile Include="Data\ResultadosLista.cs" />
+    <Compile Include="View\Detalhes.xaml.cs">
+      <DependentUpon>Detalhes.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagenes\cielo.png" />
     <None Include="packages.config" />
+    <None Include="Imagenes\cielonube.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

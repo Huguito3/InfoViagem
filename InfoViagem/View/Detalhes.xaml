@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="InfoViagem.Detalhes"
+	Title="Info Viagem">
+			<Grid>
+        <Image Source="cielonube.png" Aspect="AspectFill" />
+        <StackLayout Padding="25,50,25,0" >
+			<Label Text="Teste"></Label>
+		</StackLayout>
+
+    </Grid>
+</ContentPage>
