@@ -5,11 +5,11 @@
 	x:Class="InfoViagem.InfoViagemPage"
 	Title="Info Viagem">
 	<Grid>
-        <Image Source="cielonube.png" Aspect="AspectFill" />
+        <Image Source="cielo.png" Aspect="AspectFill" />
         <StackLayout Padding="25,160,25,0" >
 			<Entry Placeholder="Pais de Origem" Keyboard="Text" Text="{Binding Origem}" TextChanged="Handle_TextChanged" />
-			<Entry Placeholder="Pais Destino" Keyboard="Text" TextChanged="Destino_TextChanged" Margin="0,50,0,0"  />
-			<Button Text="Pesquisar" Clicked="Handle_Clicked" Margin="0,50,0,0"/>
+			<Entry Placeholder="Pais Destino" Keyboard="Text" Text="{Binding Destino}" TextChanged="Destino_TextChanged" Margin="0,50,0,0"  />
+			<Button Text="Pesquisar" Clicked="Handle_Clicked" Margin="0,50,0,0" FontSize="20"/>
 		</StackLayout>
 
     </Grid>

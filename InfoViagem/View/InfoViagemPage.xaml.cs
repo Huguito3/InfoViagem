@@ -11,15 +11,8 @@ namespace InfoViagem
 	{
 		Cidades ciudadOrigem;
 		Cidades ciudadDestino;
-		public string Origem { 
-			get { return origem;}
-			set
-			{
-				origem = value;
-
-			}
-		}
-		public string destino { get; set;}
+		public string Origem{get; set;}
+		public string Destino { get; set;}
 		private string origem;
 		public InfoViagemPage()
 		{
@@ -27,7 +20,6 @@ namespace InfoViagem
 			BindingContext = this;
 
 		}
-
 
 		async void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
 		{
@@ -52,7 +44,7 @@ namespace InfoViagem
 					if ((cidade.name.Contains(busqueda[0])) && (cidade.c.Contains(busqueda[1])))
 					{
 						ciudadOrigem = cidade;
-						origem = cidade.name;
+						Origem = cidade.name;
 
 					}
 				}
@@ -96,9 +88,39 @@ namespace InfoViagem
 		{
 			RestService service = new RestService();
 			var resultado = await service.getWeatherAsync(ciudadDestino.lat, ciudadDestino.lon);
-			await DisplayAlert("Teste", resultado.ToString(), "Cancel");
-			//await Navigation.PushAsync(new Detalhes(ciudadOrigem,ciudadDestino));
+
+			var resul = await service.convertToCurrencyAsync(verificarCidade(ciudadDestino.c), 1, verificarCidade(ciudadOrigem.c));
+
+			//await DisplayAlert("Teste", resultado.ToString(), "Cancel");
+			await Navigation.PushAsync(new Detalhes(ciudadOrigem,ciudadDestino,resul.to_amount,resultado));
 
 		}
+
+		private string verificarCidade(string pais)
+		{
+			string moeda="USD";
+			if (pais == "BR")
+			{
+				moeda = "BRL";
+			}
+			else if (pais == "US")
+			{
+				moeda = "USD";
+			}
+			else if (pais == "FR" || pais == "ES" || pais == "IT"|| pais == "PT")
+			{
+				moeda = "EUR";
+			}
+			else if (pais == "GB")
+			{
+				moeda = "GBP";
+			}
+
+
+			return moeda;
+
+		}
+
+
 	}
 }

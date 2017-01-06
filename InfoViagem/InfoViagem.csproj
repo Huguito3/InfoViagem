@@ -55,6 +55,8 @@
     <None Include="Imagenes\cielo.png" />
     <None Include="packages.config" />
     <None Include="Imagenes\cielonube.png" />
+    <None Include="Imagenes\sol.png" />
+    <None Include="Imagenes\storm.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

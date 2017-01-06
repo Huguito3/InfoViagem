@@ -3,10 +3,19 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="InfoViagem.Detalhes"
 	Title="Info Viagem">
-			<Grid>
-        <Image Source="cielonube.png" Aspect="AspectFill" />
-        <StackLayout Padding="25,50,25,0" >
-			<Label Text="Teste"></Label>
+			<Grid >
+        <Image Source="cielo.png" Aspect="AspectFill" />
+        <StackLayout Padding="30,25,25,0" >
+			<Label Text="{Binding titulo}" FontSize="20" TextColor="White" Margin="10"/>
+			<StackLayout Orientation="Horizontal">
+			 <Image Source="{Binding cielo}" HeightRequest="150" />
+				<Label Text="{Binding temperatura}" FontSize="45" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5"/>
+			</StackLayout>
+
+			<Label Text="Relação entre moedas" FontSize="22" Margin="10,30,10,10" TextColor="Blue" />
+
+			<Label Text="{Binding textoMoeda}" FontSize="15" Margin="10" TextColor="Blue" />
+
 		</StackLayout>
 
     </Grid>
